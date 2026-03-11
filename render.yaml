@@ -1,0 +1,17 @@
+
+  services:
+    - type: web
+      name: CITASalud_Backend
+      runtime: docker
+      dockerfilePath: Dockerfile
+      envVars:
+        - key: SPRING_DATASOURCE_URL
+          value: jdbc:postgresql://dpg-d0mtv63e5dus738rqaag-a:5432/eps_db_ux9y
+        - key: SPRING_DATASOURCE_USERNAME
+          value: eps_db_ux9y_user
+        - key: SPRING_DATASOURCE_PASSWORD
+          value: vFelDCA8LjphOhg6gykaKMbbKCYNUimJ
+        - key: JWT_SECRET
+          value: TuClaveSecretaSuperSegura123456789
+        - key: JWT_EXPIRATION
+          value: 3600000

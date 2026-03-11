@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: comerciosdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345678
+    ports: ["5432:5432"]
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: .
+    depends_on: [db]
+    environment:
+
+      WOMPI_PUBLIC_KEY: pub_test_uAk0nToAZz8GnY9Gjti06j3b9piCrjzP
+      WOMPI_PRIVATE_KEY: prv_test_u6Qh9ou4LH3UvJZclLLGXxneBe9AhZAX
+      WOMPI_EVENTS_SECRET: test_events_zkFgQHmvYVYS8ijg1FsqZCalpHnhfEyv
+
+      FACTUS_BASE_URL: https://api-sandbox.factus.com.co
+      FACTUS_USERNAME: sandbox@factus.com.co
+      FACTUS_PASSWORD: "sandbox2024%"
+      FACTUS_CLIENT_ID: "9f42261f-8458-498b-9320-a1e96d5481de"
+      FACTUS_CLIENT_SECRET: "kBAR1m03PYc9P9hCWdf9ThwZmPmVY4DSq7z0T4OD"
+
+
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/comerciosdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 12345678
+      JWT_SECRET: 'E8LG5pLzac8aupNx5gmymuGj0IhuoAEPD4v9IhKr4LQ='
+
+    ports: ["8080:8080"]
+
+volumes:
+  pgdata:
+
+
+
+
