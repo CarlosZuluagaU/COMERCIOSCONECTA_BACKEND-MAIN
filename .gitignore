@@ -34,3 +34,6 @@ build/
 
 ### H2 file database (dev) ###
 data/
+
+### Local docker env ###
+.env.docker
